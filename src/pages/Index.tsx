@@ -16,7 +16,7 @@ export default function Index() {
     const canvas = await html2canvas(el, {
       scale: 4,
       useCORS: true,
-      backgroundColor: "#ffffff",
+      backgroundColor: null,
       width: el.offsetWidth,
       height: el.scrollHeight,
     });
@@ -37,7 +37,7 @@ export default function Index() {
         <Icon name="Download" size={18} />
         Скачать PNG 4K
       </button>
-    <div ref={pageRef} className="bg-white text-black overflow-x-hidden font-body" style={{ aspectRatio: "4/3", width: "100%", maxHeight: "100vh", margin: "0 auto", overflow: "hidden" }}>
+    <div ref={pageRef} className="text-black overflow-x-hidden font-body" style={{ aspectRatio: "4/3", width: "100%", maxHeight: "100vh", margin: "0 auto", overflow: "hidden" }}>
 
       {/* ─── ВЕРХНЯЯ СИГНАЛЬНАЯ ПОЛОСА ─── */}
       <div className="bg-[#FFD600] py-1.5 px-6 flex items-center justify-between border-b-4 border-black">
