@@ -6,7 +6,7 @@ export default function Index() {
 
       {/* ─── ВЕРХНЯЯ СИГНАЛЬНАЯ ПОЛОСА ─── */}
       <div className="bg-[#FFD600] py-2 px-6 flex items-center justify-between">
-        <span className="text-black font-black text-xs uppercase tracking-[0.3em]">⭐⭐⭐⭐⭐ РЕЙТИНГ 5/5</span>
+        <span className="text-black font-black text-sm uppercase tracking-[0.3em]">★★★★★ РЕЙТИНГ 5/5</span>
         <div className="flex items-center gap-4 text-black font-black text-xs uppercase tracking-wider">
           <span>АРЕНДА ФУР</span>
           <span className="text-[#FF2D2D]">▶</span>
@@ -52,7 +52,7 @@ export default function Index() {
             {/* рейтинг блок */}
             <div className="hidden md:flex flex-col items-center bg-[#FFD600] px-8 py-6 ml-8 shrink-0">
               <div className="font-display font-black text-7xl text-black leading-none">5.0</div>
-              <div className="text-2xl mb-1">⭐⭐⭐⭐⭐</div>
+              <div className="text-3xl mb-1 leading-none">★★★★★</div>
               <div className="font-black text-xs uppercase tracking-widest text-black">РЕЙТИНГ</div>
             </div>
           </div>
@@ -65,25 +65,20 @@ export default function Index() {
 
           {/* КОНТАКТЫ — БОЛЬШИЕ */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {/* Telegram */}
-            <a
-              href="https://t.me/5vito"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-4 bg-[#FFD600] border-2 border-black px-6 py-6 hover:bg-[#FF6B00] transition-colors group"
-            >
+            {/* Dash */}
+            <div className="flex items-center gap-4 bg-[#FFD600] border-2 border-black px-6 py-6">
               <div className="bg-black p-3 shrink-0">
-                <Icon name="Send" size={32} className="text-[#FFD600] group-hover:text-white" />
+                <Icon name="Zap" size={32} className="text-[#FFD600]" />
               </div>
               <div>
-                <div className="font-black text-xs uppercase tracking-widest text-black/50 mb-1">Telegram</div>
+                <div className="font-black text-sm uppercase tracking-widest text-black font-extrabold mb-1">DASH</div>
                 <div className="font-display font-black leading-none text-black"
                   style={{ fontSize: "clamp(22px, 4vw, 48px)" }}>
-                  @5vito
+                  alonso.com
                 </div>
               </div>
               <Icon name="ArrowRight" size={32} className="ml-auto text-black" />
-            </a>
+            </div>
 
             {/* 5vito */}
             <div className="flex items-center gap-4 bg-[#FF2D2D] border-2 border-black px-6 py-6">
@@ -91,7 +86,7 @@ export default function Index() {
                 <Icon name="User" size={32} className="text-[#FFD600]" />
               </div>
               <div>
-                <div className="font-black text-xs uppercase tracking-widest text-white/60 mb-1">5vito</div>
+                <div className="font-black text-sm uppercase tracking-widest text-white mb-1">5vito</div>
                 <div className="font-display font-black leading-none text-white"
                   style={{ fontSize: "clamp(22px, 4vw, 48px)" }}>
                   @294562
@@ -111,7 +106,7 @@ export default function Index() {
                 <Icon name="MessageCircle" size={32} className="text-black" />
               </div>
               <div>
-                <div className="font-black text-xs uppercase tracking-widest text-white/40 mb-1">Discord</div>
+                <div className="font-black text-sm uppercase tracking-widest text-white mb-1">Discord</div>
                 <div className="font-display font-black leading-none text-[#FFD600] group-hover:text-white"
                   style={{ fontSize: "clamp(22px, 4vw, 48px)" }}>
                   ramil707
@@ -166,6 +161,10 @@ export default function Index() {
               <Icon name="Send" size={12} />
               @5vito
             </a>
+            <div className="flex items-center gap-1.5 border border-[#FF2D2D] text-[#FF2D2D] px-3 py-1.5 font-black uppercase text-xs">
+              <Icon name="User" size={12} />
+              5vito @294562
+            </div>
             <a
               href="https://discord.gg/ramil707"
               target="_blank"
