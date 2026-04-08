@@ -1,196 +1,19 @@
 import Icon from "@/components/ui/icon";
-
-const W = 3840;
-const H = 2880;
-
-function drawPNG() {
-  const canvas = document.createElement("canvas");
-  canvas.width = W;
-  canvas.height = H;
-  const c = canvas.getContext("2d")!;
-
-  // фон
-  c.fillStyle = "#ffffff";
-  c.fillRect(0, 0, W, H);
-
-  // ── ВЕРХНЯЯ ПОЛОСА ──
-  c.fillStyle = "#FFD600";
-  c.fillRect(0, 0, W, 80);
-  c.fillStyle = "#000";
-  c.fillRect(0, 80, W, 8);
-  c.font = "bold 36px Arial, sans-serif";
-  c.fillStyle = "#000";
-  c.textBaseline = "middle";
-  c.fillText("★★★★★  РЕЙТИНГ 5/5", 48, 44);
-  c.textAlign = "right";
-  c.fillText("АРЕНДА ФУР  ▶  АРЕНДА АВТО  ▶  ПРОДАЖА", W - 48, 44);
-  c.textAlign = "left";
-
-  // ── БОКОВЫЕ ПОЛОСЫ ──
-  const mainTop = 88;
-  const mainH = 1900;
-  c.fillStyle = "#FF2D2D";
-  c.fillRect(0, mainTop, 48, mainH);
-  c.fillRect(W - 48, mainTop, 48, mainH);
-  c.fillStyle = "#FFD600";
-  c.fillRect(48, mainTop, 16, mainH);
-  c.fillRect(W - 64, mainTop, 16, mainH);
-
-  // ── ЗАГОЛОВОК ──
-  const tx = 128;
-  let ty = mainTop + 80;
-
-  // Alonso.com
-  c.font = "900 200px Arial Black, Arial, sans-serif";
-  c.fillStyle = "#FF2D2D";
-  c.fillText("Alonso.com", tx, ty);
-  c.strokeStyle = "#000";
-  c.lineWidth = 6;
-  c.strokeText("Alonso.com", tx, ty);
-  ty += 220;
-
-  // АРЕНДА & ПРОДАЖА
-  c.font = "900 130px Arial Black, Arial, sans-serif";
-  c.fillStyle = "#000";
-  c.lineWidth = 0;
-  c.fillText("АРЕНДА & ПРОДАЖА", tx, ty);
-  ty += 150;
-
-  // ГРУЗОВЫХ И ЛЕГКОВЫХ АВТО
-  c.font = "900 90px Arial Black, Arial, sans-serif";
-  c.fillStyle = "#FF6B00";
-  c.fillText("ГРУЗОВЫХ И ЛЕГКОВЫХ АВТО", tx, ty);
-
-  // ── РЕЙТИНГ БЛОК ──
-  const rb = { x: W - 560, y: mainTop + 60, w: 440, h: 380 };
-  c.fillStyle = "#FFD600";
-  c.fillRect(rb.x, rb.y, rb.w, rb.h);
-  c.font = "900 180px Arial Black, Arial, sans-serif";
-  c.fillStyle = "#000";
-  c.textAlign = "center";
-  c.fillText("5.0", rb.x + rb.w / 2, rb.y + 190);
-  c.font = "bold 72px Arial, sans-serif";
-  c.fillText("★★★★★", rb.x + rb.w / 2, rb.y + 290);
-  c.font = "bold 32px Arial, sans-serif";
-  c.fillText("РЕЙТИНГ", rb.x + rb.w / 2, rb.y + 355);
-  c.textAlign = "left";
-
-  // ── ДИАГОНАЛЬНАЯ ПОЛОСА ──
-  ty = mainTop + 600;
-  for (let x = 0; x < W; x += 40) {
-    c.fillStyle = x % 80 < 40 ? "#FFD600" : "#000";
-    c.fillRect(x, ty, 40, 24);
-  }
-
-  // ── КОНТАКТЫ подпись ──
-  ty += 60;
-  c.font = "900 40px Arial Black, Arial, sans-serif";
-  c.fillStyle = "#000";
-  c.fillText("КОНТАКТЫ", tx, ty + 30);
-  c.fillStyle = "rgba(0,0,0,0.4)";
-  c.fillRect(tx + 340, ty + 18, W - tx - 340 - 128, 4);
-
-  // ── КАРТОЧКИ КОНТАКТОВ ──
-  ty += 70;
-  const cardW = (W - 128 * 2 - 32 * 2) / 3;
-  const cardH = 280;
-  const cards = [
-    { bg: "#FFD600", label: "DASH", value: "alonso.com", textColor: "#000", labelColor: "#000" },
-    { bg: "#FF2D2D", label: "5vito", value: "@294562", textColor: "#fff", labelColor: "#fff" },
-    { bg: "#000000", label: "Discord", value: "ramil707", textColor: "#FFD600", labelColor: "#fff" },
-  ];
-  cards.forEach((card, i) => {
-    const cx = tx + i * (cardW + 32);
-    c.fillStyle = card.bg;
-    c.strokeStyle = "#000";
-    c.lineWidth = 4;
-    c.fillRect(cx, ty, cardW, cardH);
-    c.strokeRect(cx, ty, cardW, cardH);
-
-    // иконка фон
-    c.fillStyle = card.bg === "#000000" ? "#FFD600" : "#000";
-    c.fillRect(cx + 24, ty + 24, 80, 80);
-
-    // label
-    c.font = "bold 32px Arial, sans-serif";
-    c.fillStyle = card.labelColor;
-    c.fillText(card.label, cx + 130, ty + 80);
-
-    // value
-    c.font = "900 72px Arial Black, Arial, sans-serif";
-    c.fillStyle = card.textColor;
-    c.fillText(card.value, cx + 130, ty + 190);
-  });
-
-  // ── СТАТИСТИКА ──
-  const statsY = mainTop + mainH;
-  c.fillStyle = "#FFD600";
-  c.fillRect(0, statsY, W, 260);
-  const stats = [
-    { val: "500+", label: "Клиентов" },
-    { val: "5.0", label: "★★★★★" },
-    { val: "24/7", label: "Поддержка" },
-  ];
-  stats.forEach((s, i) => {
-    const sx = (W / 3) * i;
-    c.textAlign = "center";
-    c.font = "900 120px Arial Black, Arial, sans-serif";
-    c.fillStyle = "#000";
-    c.fillText(s.val, sx + W / 6, statsY + 145);
-    c.font = "bold 36px Arial, sans-serif";
-    c.fillStyle = "rgba(0,0,0,0.6)";
-    c.fillText(s.label, sx + W / 6, statsY + 210);
-    if (i < 2) {
-      c.fillStyle = "rgba(0,0,0,0.2)";
-      c.fillRect(sx + W / 3 - 2, statsY + 20, 4, 220);
-    }
-  });
-
-  // ── НИЖНИЙ ФУТЕР ──
-  const footerY = statsY + 260;
-  c.fillStyle = "#000";
-  c.fillRect(0, footerY, W, H - footerY);
-  c.fillStyle = "#FFD600";
-  c.fillRect(0, footerY, W, 8);
-
-  c.textAlign = "left";
-  c.font = "900 36px Arial Black, Arial, sans-serif";
-  c.fillStyle = "#FFD600";
-  c.fillText("Alonso", 48, footerY + 72);
-  c.fillStyle = "#fff";
-  const aw = c.measureText("Alonso").width;
-  c.fillText(".com", 48 + aw, footerY + 72);
-
-  c.font = "bold 24px Arial, sans-serif";
-  c.fillStyle = "#9ca3af";
-  c.fillText("АРЕНДА И ПРОДАЖА АВТО", 48, footerY + 110);
-
-  // кнопки футера
-  const btns = ["DASH  alonso.com", "5vito  @294562", "Discord — ramil707"];
-  const bcolors = ["#FFD600", "#FF2D2D", "#FF6B00"];
-  let bx = W / 2 - 700;
-  btns.forEach((b, i) => {
-    c.strokeStyle = bcolors[i];
-    c.lineWidth = 4;
-    c.strokeRect(bx, footerY + 30, 420, 80);
-    c.font = "bold 28px Arial, sans-serif";
-    c.fillStyle = bcolors[i];
-    c.textAlign = "center";
-    c.fillText(b, bx + 210, footerY + 78);
-    bx += 450;
-  });
-
-  c.textAlign = "right";
-  c.font = "bold 24px Arial, sans-serif";
-  c.fillStyle = "#6b7280";
-  c.fillText("© 2026", W - 48, footerY + 80);
-
-  return canvas;
-}
+import { useRef } from "react";
+import html2canvas from "html2canvas";
 
 export default function Index() {
-  const downloadPNG = () => {
-    const canvas = drawPNG();
+  const pageRef = useRef<HTMLDivElement>(null);
+
+  const downloadPNG = async () => {
+    if (!pageRef.current) return;
+    const canvas = await html2canvas(pageRef.current, {
+      scale: 4,
+      useCORS: true,
+      backgroundColor: "#ffffff",
+      width: pageRef.current.offsetWidth,
+      height: pageRef.current.offsetHeight,
+    });
     const link = document.createElement("a");
     link.download = "alonso-4k.png";
     link.href = canvas.toDataURL("image/png", 1.0);
@@ -206,94 +29,119 @@ export default function Index() {
         <Icon name="Download" size={18} />
         Скачать PNG 4K
       </button>
-    <div className="bg-white text-black overflow-x-hidden font-body" style={{ aspectRatio: "4/3", width: "100%", maxHeight: "100vh", margin: "0 auto", overflow: "hidden" }}>
+    <div ref={pageRef} className="bg-white text-black overflow-x-hidden font-body" style={{ aspectRatio: "4/3", width: "100%", maxHeight: "100vh", margin: "0 auto", overflow: "hidden" }}>
 
       {/* ─── ВЕРХНЯЯ СИГНАЛЬНАЯ ПОЛОСА ─── */}
-      <div style={{ background: "#FFD600", borderBottom: "4px solid #000", padding: "6px 24px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-        <span style={{ color: "#000", fontWeight: 900, fontSize: "12px", textTransform: "uppercase", letterSpacing: "0.3em" }}>★★★★★ РЕЙТИНГ 5/5</span>
-        <div style={{ display: "flex", alignItems: "center", gap: "16px", color: "#000", fontWeight: 900, fontSize: "12px", textTransform: "uppercase", letterSpacing: "0.1em" }}>
+      <div className="bg-[#FFD600] py-1.5 px-6 flex items-center justify-between border-b-4 border-black">
+        <span className="text-black font-black text-xs uppercase tracking-[0.3em]">★★★★★ РЕЙТИНГ 5/5</span>
+        <div className="flex items-center gap-4 text-black font-black text-xs uppercase tracking-wider">
           <span>АРЕНДА ФУР</span>
-          <span style={{ color: "#FF2D2D" }}>▶</span>
+          <span className="text-[#FF2D2D]">▶</span>
           <span>АРЕНДА АВТО</span>
-          <span style={{ color: "#FF2D2D" }}>▶</span>
+          <span className="text-[#FF2D2D]">▶</span>
           <span>ПРОДАЖА</span>
         </div>
       </div>
 
-      {/* ─── ГЛАВНЫЙ ПРИНТ ─── */}
-      <section style={{ position: "relative", background: "#fff", borderBottom: "8px solid #FFD600", overflow: "hidden" }}>
+      {/* ─── ГЛАВНЫЙ ПРИНТ — БОК ФУРЫ ─── */}
+      <section className="relative bg-white border-b-8 border-[#FFD600] overflow-hidden">
         {/* боковые полосы */}
-        <div style={{ position: "absolute", left: 0, top: 0, width: "24px", height: "100%", background: "#FF2D2D" }} />
-        <div style={{ position: "absolute", right: 0, top: 0, width: "24px", height: "100%", background: "#FF2D2D" }} />
-        <div style={{ position: "absolute", left: "24px", top: 0, width: "8px", height: "100%", background: "#FFD600" }} />
-        <div style={{ position: "absolute", right: "24px", top: 0, width: "8px", height: "100%", background: "#FFD600" }} />
+        <div className="absolute left-0 top-0 w-6 h-full bg-[#FF2D2D]" />
+        <div className="absolute right-0 top-0 w-6 h-full bg-[#FF2D2D]" />
+        <div className="absolute left-6 top-0 w-2 h-full bg-[#FFD600]" />
+        <div className="absolute right-6 top-0 w-2 h-full bg-[#FFD600]" />
 
-        <div style={{ padding: "40px 64px" }}>
+        <div className="px-16 py-12">
 
           {/* НАЗВАНИЕ + РЕЙТИНГ */}
-          <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: "8px" }}>
-            <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-              <div style={{ fontSize: "120px", color: "#FF2D2D", WebkitTextStroke: "3px #000", lineHeight: 1, fontWeight: 900, letterSpacing: "-2px" }}>
+          <div className="flex items-end justify-between mb-2">
+            <div>
+              <div
+                className="font-display font-black leading-none tracking-tighter"
+                style={{ fontSize: "clamp(80px, 15vw, 200px)", color: "#FF2D2D", WebkitTextStroke: "3px #000" }}
+              >
                 Alonso.com
               </div>
-              <div style={{ fontSize: "72px", color: "#000", lineHeight: 1, fontWeight: 900, textTransform: "uppercase", letterSpacing: "-1px" }}>
+              <div
+                className="font-display font-black uppercase leading-none tracking-tighter -mt-4"
+                style={{ fontSize: "clamp(40px, 8vw, 110px)", color: "#000" }}
+              >
                 АРЕНДА & ПРОДАЖА
               </div>
-              <div style={{ fontSize: "48px", color: "#FF6B00", lineHeight: 1, fontWeight: 900, textTransform: "uppercase", letterSpacing: "-1px" }}>
+              <div
+                className="font-display font-black uppercase leading-none tracking-tighter"
+                style={{ fontSize: "clamp(30px, 5vw, 72px)", color: "#FF6B00" }}
+              >
                 ГРУЗОВЫХ И ЛЕГКОВЫХ АВТО
               </div>
             </div>
 
             {/* рейтинг блок */}
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", background: "#FFD600", padding: "24px 32px", marginLeft: "32px", flexShrink: 0 }}>
-              <div style={{ fontSize: "72px", color: "#000", lineHeight: 1, fontWeight: 900 }}>5.0</div>
-              <div style={{ fontSize: "28px", color: "#000", lineHeight: 1.2, fontWeight: 900 }}>★★★★★</div>
-              <div style={{ fontSize: "11px", color: "#000", textTransform: "uppercase", letterSpacing: "0.1em", fontWeight: 900, marginTop: "4px" }}>РЕЙТИНГ</div>
+            <div className="hidden md:flex flex-col items-center bg-[#FFD600] px-8 py-6 ml-8 shrink-0">
+              <div className="font-display font-black text-7xl text-black leading-none">5.0</div>
+              <div className="text-3xl mb-1 leading-none">★★★★★</div>
+              <div className="font-black text-xs uppercase tracking-widest text-black">РЕЙТИНГ</div>
             </div>
           </div>
 
           {/* диагональный разделитель */}
-          <div style={{ height: "12px", margin: "20px 0", overflow: "hidden", background: "repeating-linear-gradient(45deg, #FFD600 0px, #FFD600 20px, #000 20px, #000 24px)" }} />
+          <div className="relative h-3 my-6 overflow-hidden">
+            <div className="absolute inset-0"
+              style={{ background: "repeating-linear-gradient(45deg, #FFD600 0px, #FFD600 20px, #000 20px, #000 24px)" }} />
+          </div>
 
           {/* КОНТАКТЫ — БОЛЬШИЕ */}
-          <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "12px" }}>
-            <div style={{ fontWeight: 900, fontSize: "14px", textTransform: "uppercase", letterSpacing: "0.3em", color: "#000" }}>КОНТАКТЫ</div>
-            <div style={{ flex: 1, height: "2px", background: "rgba(0,0,0,0.4)" }} />
+          <div className="flex items-center gap-4 mb-3">
+            <div className="font-black text-base uppercase tracking-[0.3em] text-black">КОНТАКТЫ</div>
+            <div className="flex-1 h-0.5 bg-black/40" />
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "16px" }}>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {/* Dash */}
-            <div style={{ display: "flex", alignItems: "center", gap: "16px", background: "#FFD600", border: "2px solid #000", padding: "24px" }}>
-              <div style={{ background: "#000", padding: "12px", flexShrink: 0 }}>
+            <div className="flex items-center gap-4 bg-[#FFD600] border-2 border-black px-6 py-6">
+              <div className="bg-black p-3 shrink-0">
                 <Icon name="Zap" size={32} className="text-[#FFD600]" />
               </div>
               <div>
-                <div style={{ fontWeight: 900, fontSize: "12px", textTransform: "uppercase", letterSpacing: "0.1em", color: "#000", marginBottom: "4px" }}>DASH</div>
-                <div style={{ fontWeight: 900, fontSize: "36px", lineHeight: 1, color: "#000" }}>alonso.com</div>
+                <div className="font-black text-sm uppercase tracking-widest text-black font-extrabold mb-1">DASH</div>
+                <div className="font-display font-black leading-none text-black"
+                  style={{ fontSize: "clamp(22px, 4vw, 48px)" }}>
+                  alonso.com
+                </div>
               </div>
               <Icon name="ArrowRight" size={32} className="ml-auto text-black" />
             </div>
 
             {/* 5vito */}
-            <div style={{ display: "flex", alignItems: "center", gap: "16px", background: "#FF2D2D", border: "2px solid #000", padding: "24px" }}>
-              <div style={{ background: "#000", padding: "12px", flexShrink: 0 }}>
+            <div className="flex items-center gap-4 bg-[#FF2D2D] border-2 border-black px-6 py-6">
+              <div className="bg-black p-3 shrink-0">
                 <Icon name="User" size={32} className="text-[#FFD600]" />
               </div>
               <div>
-                <div style={{ fontWeight: 900, fontSize: "12px", textTransform: "uppercase", letterSpacing: "0.1em", color: "#fff", marginBottom: "4px" }}>5vito</div>
-                <div style={{ fontWeight: 900, fontSize: "36px", lineHeight: 1, color: "#fff" }}>@294562</div>
+                <div className="font-black text-sm uppercase tracking-widest text-white mb-1">5vito</div>
+                <div className="font-display font-black leading-none text-white"
+                  style={{ fontSize: "clamp(22px, 4vw, 48px)" }}>
+                  @294562
+                </div>
               </div>
               <Icon name="ArrowRight" size={32} className="ml-auto text-white" />
             </div>
 
             {/* Discord */}
-            <a href="https://discord.gg/ramil707" target="_blank" rel="noopener noreferrer"
-              style={{ display: "flex", alignItems: "center", gap: "16px", background: "#000", border: "2px solid #000", padding: "24px", textDecoration: "none" }}>
-              <div style={{ background: "#FFD600", padding: "12px", flexShrink: 0 }}>
+            <a
+              href="https://discord.gg/ramil707"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-4 bg-black border-2 border-black px-6 py-6 hover:bg-[#FF2D2D] transition-colors group"
+            >
+              <div className="bg-[#FFD600] p-3 shrink-0">
                 <Icon name="MessageCircle" size={32} className="text-black" />
               </div>
               <div>
-                <div style={{ fontWeight: 900, fontSize: "12px", textTransform: "uppercase", letterSpacing: "0.1em", color: "#fff", marginBottom: "4px" }}>Discord</div>
-                <div style={{ fontWeight: 900, fontSize: "36px", lineHeight: 1, color: "#FFD600" }}>ramil707</div>
+                <div className="font-black text-sm uppercase tracking-widest text-white mb-1">Discord</div>
+                <div className="font-display font-black leading-none text-[#FFD600] group-hover:text-white"
+                  style={{ fontSize: "clamp(22px, 4vw, 48px)" }}>
+                  ramil707
+                </div>
               </div>
               <Icon name="ArrowRight" size={32} className="ml-auto text-[#FFD600]" />
             </a>
@@ -302,46 +150,60 @@ export default function Index() {
       </section>
 
       {/* ─── СТАТИСТИКА ─── */}
-      <section style={{ background: "#FFD600", padding: "32px 0" }}>
-        <div style={{ display: "flex", textAlign: "center" }}>
-          <div style={{ flex: 1, padding: "0 16px", borderRight: "1px solid rgba(0,0,0,0.2)" }}>
-            <div style={{ fontWeight: 900, fontSize: "56px", color: "#000", lineHeight: 1 }}>500+</div>
-            <div style={{ fontWeight: 900, fontSize: "11px", color: "rgba(0,0,0,0.6)", textTransform: "uppercase", letterSpacing: "0.1em", marginTop: "4px" }}>Клиентов</div>
-          </div>
-          <div style={{ flex: 1, padding: "0 16px", borderRight: "1px solid rgba(0,0,0,0.2)" }}>
-            <div style={{ fontWeight: 900, fontSize: "56px", color: "#000", lineHeight: 1 }}>5.0</div>
-            <div style={{ fontWeight: 900, fontSize: "20px", color: "#000", marginTop: "4px" }}>★★★★★</div>
-          </div>
-          <div style={{ flex: 1, padding: "0 16px" }}>
-            <div style={{ fontWeight: 900, fontSize: "56px", color: "#000", lineHeight: 1 }}>24/7</div>
-            <div style={{ fontWeight: 900, fontSize: "11px", color: "rgba(0,0,0,0.6)", textTransform: "uppercase", letterSpacing: "0.1em", marginTop: "4px" }}>Поддержка</div>
+      <section className="bg-[#FFD600] py-10">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-3 gap-0 text-center divide-x divide-black/20">
+            <div className="px-4">
+              <div className="font-display font-black text-5xl md:text-6xl text-black leading-none">500+</div>
+              <div className="font-black text-xs uppercase tracking-widest text-black/60 mt-1">Клиентов</div>
+            </div>
+            <div className="px-4">
+              <div className="font-display font-black text-5xl md:text-6xl text-black leading-none">5.0</div>
+              <div className="flex justify-center gap-0.5 mt-1">
+                {[...Array(5)].map((_, i) => <span key={i} className="text-lg">⭐</span>)}
+              </div>
+            </div>
+            <div className="px-4">
+              <div className="font-display font-black text-5xl md:text-6xl text-black leading-none">24/7</div>
+              <div className="font-black text-xs uppercase tracking-widest text-black/60 mt-1">Поддержка</div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* ─── FOOTER ─── */}
-      <footer style={{ background: "#000", borderTop: "4px solid #FFD600", padding: "8px 24px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-        <div>
-          <div style={{ fontWeight: 900, fontSize: "12px", lineHeight: 1 }}>
-            <span style={{ color: "#FFD600" }}>Alonso</span>
-            <span style={{ color: "#fff" }}>.com</span>
+      <footer className="bg-black border-t-4 border-[#FFD600] py-2">
+        <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-2">
+          <div>
+            <div className="font-display font-black text-xs tracking-tight leading-none">
+              <span className="text-[#FFD600]">Alonso</span>
+              <span className="text-white">.com</span>
+            </div>
+            <div className="text-gray-400 text-xs uppercase tracking-widest mt-1">Аренда и продажа авто</div>
           </div>
-          <div style={{ color: "#9ca3af", fontSize: "10px", textTransform: "uppercase", letterSpacing: "0.1em", marginTop: "3px" }}>Аренда и продажа авто</div>
-        </div>
 
-        <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
-          <div style={{ border: "2px solid #FFD600", color: "#FFD600", padding: "3px 10px", fontWeight: 900, fontSize: "11px", textTransform: "uppercase" }}>
-            DASH alonso.com
+          <div className="flex flex-wrap gap-3">
+            <div className="flex items-center gap-1.5 border-2 border-[#FFD600] text-[#FFD600] px-3 py-1 font-black uppercase text-xs">
+              <Icon name="Zap" size={11} />
+              DASH alonso.com
+            </div>
+            <div className="flex items-center gap-1.5 border-2 border-[#FF2D2D] text-[#FF2D2D] px-3 py-1 font-black uppercase text-xs">
+              <Icon name="User" size={11} />
+              5vito @294562
+            </div>
+            <a
+              href="https://discord.gg/ramil707"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 border-2 border-[#FF6B00] text-[#FF6B00] px-3 py-1 font-black uppercase text-xs hover:bg-[#FF6B00] hover:text-black transition-colors"
+            >
+              <Icon name="MessageCircle" size={11} />
+              Discord — ramil707
+            </a>
           </div>
-          <div style={{ border: "2px solid #FF2D2D", color: "#FF2D2D", padding: "3px 10px", fontWeight: 900, fontSize: "11px", textTransform: "uppercase" }}>
-            5vito @294562
-          </div>
-          <div style={{ border: "2px solid #FF6B00", color: "#FF6B00", padding: "3px 10px", fontWeight: 900, fontSize: "11px", textTransform: "uppercase" }}>
-            Discord — ramil707
-          </div>
-        </div>
 
-        <div style={{ color: "#6b7280", fontSize: "10px", textTransform: "uppercase", letterSpacing: "0.1em" }}>© 2026</div>
+          <div className="text-gray-500 text-xs uppercase tracking-widest">© 2026</div>
+        </div>
       </footer>
     </div>
     </div>
