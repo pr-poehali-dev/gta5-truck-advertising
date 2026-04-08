@@ -114,7 +114,7 @@ export default function Index() {
                 <div className="font-black text-xs uppercase tracking-widest text-white/40 mb-1">Discord</div>
                 <div className="font-display font-black leading-none text-[#FFD600] group-hover:text-white"
                   style={{ fontSize: "clamp(22px, 4vw, 48px)" }}>
-                  ramil707 / 5vito
+                  ramil707
                 </div>
               </div>
               <Icon name="ArrowRight" size={32} className="ml-auto text-[#FFD600]" />
