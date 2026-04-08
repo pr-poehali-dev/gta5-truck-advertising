@@ -1,29 +1,196 @@
 import Icon from "@/components/ui/icon";
-import { useRef } from "react";
-import html2canvas from "html2canvas";
+
+const W = 3840;
+const H = 2880;
+
+function drawPNG() {
+  const canvas = document.createElement("canvas");
+  canvas.width = W;
+  canvas.height = H;
+  const c = canvas.getContext("2d")!;
+
+  // фон
+  c.fillStyle = "#ffffff";
+  c.fillRect(0, 0, W, H);
+
+  // ── ВЕРХНЯЯ ПОЛОСА ──
+  c.fillStyle = "#FFD600";
+  c.fillRect(0, 0, W, 80);
+  c.fillStyle = "#000";
+  c.fillRect(0, 80, W, 8);
+  c.font = "bold 36px Arial, sans-serif";
+  c.fillStyle = "#000";
+  c.textBaseline = "middle";
+  c.fillText("★★★★★  РЕЙТИНГ 5/5", 48, 44);
+  c.textAlign = "right";
+  c.fillText("АРЕНДА ФУР  ▶  АРЕНДА АВТО  ▶  ПРОДАЖА", W - 48, 44);
+  c.textAlign = "left";
+
+  // ── БОКОВЫЕ ПОЛОСЫ ──
+  const mainTop = 88;
+  const mainH = 1900;
+  c.fillStyle = "#FF2D2D";
+  c.fillRect(0, mainTop, 48, mainH);
+  c.fillRect(W - 48, mainTop, 48, mainH);
+  c.fillStyle = "#FFD600";
+  c.fillRect(48, mainTop, 16, mainH);
+  c.fillRect(W - 64, mainTop, 16, mainH);
+
+  // ── ЗАГОЛОВОК ──
+  const tx = 128;
+  let ty = mainTop + 80;
+
+  // Alonso.com
+  c.font = "900 200px Arial Black, Arial, sans-serif";
+  c.fillStyle = "#FF2D2D";
+  c.fillText("Alonso.com", tx, ty);
+  c.strokeStyle = "#000";
+  c.lineWidth = 6;
+  c.strokeText("Alonso.com", tx, ty);
+  ty += 220;
+
+  // АРЕНДА & ПРОДАЖА
+  c.font = "900 130px Arial Black, Arial, sans-serif";
+  c.fillStyle = "#000";
+  c.lineWidth = 0;
+  c.fillText("АРЕНДА & ПРОДАЖА", tx, ty);
+  ty += 150;
+
+  // ГРУЗОВЫХ И ЛЕГКОВЫХ АВТО
+  c.font = "900 90px Arial Black, Arial, sans-serif";
+  c.fillStyle = "#FF6B00";
+  c.fillText("ГРУЗОВЫХ И ЛЕГКОВЫХ АВТО", tx, ty);
+
+  // ── РЕЙТИНГ БЛОК ──
+  const rb = { x: W - 560, y: mainTop + 60, w: 440, h: 380 };
+  c.fillStyle = "#FFD600";
+  c.fillRect(rb.x, rb.y, rb.w, rb.h);
+  c.font = "900 180px Arial Black, Arial, sans-serif";
+  c.fillStyle = "#000";
+  c.textAlign = "center";
+  c.fillText("5.0", rb.x + rb.w / 2, rb.y + 190);
+  c.font = "bold 72px Arial, sans-serif";
+  c.fillText("★★★★★", rb.x + rb.w / 2, rb.y + 290);
+  c.font = "bold 32px Arial, sans-serif";
+  c.fillText("РЕЙТИНГ", rb.x + rb.w / 2, rb.y + 355);
+  c.textAlign = "left";
+
+  // ── ДИАГОНАЛЬНАЯ ПОЛОСА ──
+  ty = mainTop + 600;
+  for (let x = 0; x < W; x += 40) {
+    c.fillStyle = x % 80 < 40 ? "#FFD600" : "#000";
+    c.fillRect(x, ty, 40, 24);
+  }
+
+  // ── КОНТАКТЫ подпись ──
+  ty += 60;
+  c.font = "900 40px Arial Black, Arial, sans-serif";
+  c.fillStyle = "#000";
+  c.fillText("КОНТАКТЫ", tx, ty + 30);
+  c.fillStyle = "rgba(0,0,0,0.4)";
+  c.fillRect(tx + 340, ty + 18, W - tx - 340 - 128, 4);
+
+  // ── КАРТОЧКИ КОНТАКТОВ ──
+  ty += 70;
+  const cardW = (W - 128 * 2 - 32 * 2) / 3;
+  const cardH = 280;
+  const cards = [
+    { bg: "#FFD600", label: "DASH", value: "alonso.com", textColor: "#000", labelColor: "#000" },
+    { bg: "#FF2D2D", label: "5vito", value: "@294562", textColor: "#fff", labelColor: "#fff" },
+    { bg: "#000000", label: "Discord", value: "ramil707", textColor: "#FFD600", labelColor: "#fff" },
+  ];
+  cards.forEach((card, i) => {
+    const cx = tx + i * (cardW + 32);
+    c.fillStyle = card.bg;
+    c.strokeStyle = "#000";
+    c.lineWidth = 4;
+    c.fillRect(cx, ty, cardW, cardH);
+    c.strokeRect(cx, ty, cardW, cardH);
+
+    // иконка фон
+    c.fillStyle = card.bg === "#000000" ? "#FFD600" : "#000";
+    c.fillRect(cx + 24, ty + 24, 80, 80);
+
+    // label
+    c.font = "bold 32px Arial, sans-serif";
+    c.fillStyle = card.labelColor;
+    c.fillText(card.label, cx + 130, ty + 80);
+
+    // value
+    c.font = "900 72px Arial Black, Arial, sans-serif";
+    c.fillStyle = card.textColor;
+    c.fillText(card.value, cx + 130, ty + 190);
+  });
+
+  // ── СТАТИСТИКА ──
+  const statsY = mainTop + mainH;
+  c.fillStyle = "#FFD600";
+  c.fillRect(0, statsY, W, 260);
+  const stats = [
+    { val: "500+", label: "Клиентов" },
+    { val: "5.0", label: "★★★★★" },
+    { val: "24/7", label: "Поддержка" },
+  ];
+  stats.forEach((s, i) => {
+    const sx = (W / 3) * i;
+    c.textAlign = "center";
+    c.font = "900 120px Arial Black, Arial, sans-serif";
+    c.fillStyle = "#000";
+    c.fillText(s.val, sx + W / 6, statsY + 145);
+    c.font = "bold 36px Arial, sans-serif";
+    c.fillStyle = "rgba(0,0,0,0.6)";
+    c.fillText(s.label, sx + W / 6, statsY + 210);
+    if (i < 2) {
+      c.fillStyle = "rgba(0,0,0,0.2)";
+      c.fillRect(sx + W / 3 - 2, statsY + 20, 4, 220);
+    }
+  });
+
+  // ── НИЖНИЙ ФУТЕР ──
+  const footerY = statsY + 260;
+  c.fillStyle = "#000";
+  c.fillRect(0, footerY, W, H - footerY);
+  c.fillStyle = "#FFD600";
+  c.fillRect(0, footerY, W, 8);
+
+  c.textAlign = "left";
+  c.font = "900 36px Arial Black, Arial, sans-serif";
+  c.fillStyle = "#FFD600";
+  c.fillText("Alonso", 48, footerY + 72);
+  c.fillStyle = "#fff";
+  const aw = c.measureText("Alonso").width;
+  c.fillText(".com", 48 + aw, footerY + 72);
+
+  c.font = "bold 24px Arial, sans-serif";
+  c.fillStyle = "#9ca3af";
+  c.fillText("АРЕНДА И ПРОДАЖА АВТО", 48, footerY + 110);
+
+  // кнопки футера
+  const btns = ["DASH  alonso.com", "5vito  @294562", "Discord — ramil707"];
+  const bcolors = ["#FFD600", "#FF2D2D", "#FF6B00"];
+  let bx = W / 2 - 700;
+  btns.forEach((b, i) => {
+    c.strokeStyle = bcolors[i];
+    c.lineWidth = 4;
+    c.strokeRect(bx, footerY + 30, 420, 80);
+    c.font = "bold 28px Arial, sans-serif";
+    c.fillStyle = bcolors[i];
+    c.textAlign = "center";
+    c.fillText(b, bx + 210, footerY + 78);
+    bx += 450;
+  });
+
+  c.textAlign = "right";
+  c.font = "bold 24px Arial, sans-serif";
+  c.fillStyle = "#6b7280";
+  c.fillText("© 2026", W - 48, footerY + 80);
+
+  return canvas;
+}
 
 export default function Index() {
-  const pageRef = useRef<HTMLDivElement>(null);
-
-  const downloadPNG = async () => {
-    if (!pageRef.current) return;
-    const el = pageRef.current;
-    const rect = el.getBoundingClientRect();
-    const canvas = await html2canvas(el, {
-      scale: 4,
-      useCORS: true,
-      allowTaint: true,
-      backgroundColor: "#ffffff",
-      width: rect.width,
-      height: rect.height,
-      windowWidth: rect.width,
-      windowHeight: rect.height,
-      x: 0,
-      y: 0,
-      scrollX: 0,
-      scrollY: 0,
-      logging: false,
-    });
+  const downloadPNG = () => {
+    const canvas = drawPNG();
     const link = document.createElement("a");
     link.download = "alonso-4k.png";
     link.href = canvas.toDataURL("image/png", 1.0);
@@ -39,7 +206,7 @@ export default function Index() {
         <Icon name="Download" size={18} />
         Скачать PNG 4K
       </button>
-    <div ref={pageRef} className="bg-white text-black overflow-x-hidden font-body" style={{ aspectRatio: "4/3", width: "100%", maxHeight: "100vh", margin: "0 auto", overflow: "hidden" }}>
+    <div className="bg-white text-black overflow-x-hidden font-body" style={{ aspectRatio: "4/3", width: "100%", maxHeight: "100vh", margin: "0 auto", overflow: "hidden" }}>
 
       {/* ─── ВЕРХНЯЯ СИГНАЛЬНАЯ ПОЛОСА ─── */}
       <div style={{ background: "#FFD600", borderBottom: "4px solid #000", padding: "6px 24px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
