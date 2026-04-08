@@ -64,7 +64,7 @@ export default function Index() {
           </div>
 
           {/* КОНТАКТЫ — БОЛЬШИЕ */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {/* Telegram */}
             <a
               href="https://t.me/5vito"
@@ -84,6 +84,21 @@ export default function Index() {
               </div>
               <Icon name="ArrowRight" size={32} className="ml-auto text-black" />
             </a>
+
+            {/* 5vito */}
+            <div className="flex items-center gap-4 bg-[#FF2D2D] border-2 border-black px-6 py-6">
+              <div className="bg-black p-3 shrink-0">
+                <Icon name="User" size={32} className="text-[#FFD600]" />
+              </div>
+              <div>
+                <div className="font-black text-xs uppercase tracking-widest text-white/60 mb-1">5vito</div>
+                <div className="font-display font-black leading-none text-white"
+                  style={{ fontSize: "clamp(22px, 4vw, 48px)" }}>
+                  @294562
+                </div>
+              </div>
+              <Icon name="ArrowRight" size={32} className="ml-auto text-white" />
+            </div>
 
             {/* Discord */}
             <a
