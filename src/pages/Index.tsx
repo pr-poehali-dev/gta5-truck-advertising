@@ -57,14 +57,14 @@ export default function Index() {
           <div className="flex items-end justify-between mb-2">
             <div>
               <div
-                className="font-display font-black leading-none tracking-tighter"
-                style={{ fontSize: "clamp(80px, 15vw, 200px)", color: "#FF2D2D", WebkitTextStroke: "3px #000" }}
+                className="font-display font-black tracking-tighter"
+                style={{ fontSize: "clamp(80px, 15vw, 200px)", color: "#FF2D2D", WebkitTextStroke: "3px #000", lineHeight: 1 }}
               >
                 Alonso.com
               </div>
               <div
-                className="font-display font-black uppercase leading-none tracking-tighter -mt-4"
-                style={{ fontSize: "clamp(40px, 8vw, 110px)", color: "#000" }}
+                className="font-display font-black uppercase tracking-tighter"
+                style={{ fontSize: "clamp(40px, 8vw, 110px)", color: "#000", lineHeight: 1 }}
               >
                 АРЕНДА & ПРОДАЖА
               </div>
