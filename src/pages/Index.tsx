@@ -179,15 +179,10 @@ export default function Index() {
           </div>
 
           <div className="flex flex-wrap gap-3">
-            <a
-              href="https://t.me/5vito"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 border border-[#FFD600] text-[#FFD600] px-3 py-1.5 font-black uppercase text-xs hover:bg-[#FFD600] hover:text-black transition-colors"
-            >
-              <Icon name="Send" size={12} />
-              @5vito
-            </a>
+            <div className="flex items-center gap-1.5 border border-[#FFD600] text-[#FFD600] px-3 py-1.5 font-black uppercase text-xs">
+              <Icon name="Zap" size={12} />
+              DASH alonso.com
+            </div>
             <div className="flex items-center gap-1.5 border border-[#FF2D2D] text-[#FF2D2D] px-3 py-1.5 font-black uppercase text-xs">
               <Icon name="User" size={12} />
               5vito @294562
@@ -199,7 +194,7 @@ export default function Index() {
               className="flex items-center gap-1.5 border border-[#FF6B00] text-[#FF6B00] px-3 py-1.5 font-black uppercase text-xs hover:bg-[#FF6B00] hover:text-black transition-colors"
             >
               <Icon name="MessageCircle" size={12} />
-              ramil707
+              Discord — ramil707
             </a>
           </div>
 
