@@ -7,13 +7,21 @@ export default function Index() {
 
   const downloadPNG = async () => {
     if (!pageRef.current) return;
-    const canvas = await html2canvas(pageRef.current, {
+    const el = pageRef.current;
+    const prev = el.style.maxHeight;
+    const prevOverflow = el.style.overflow;
+    el.style.maxHeight = "none";
+    el.style.overflow = "visible";
+    await new Promise(r => setTimeout(r, 100));
+    const canvas = await html2canvas(el, {
       scale: 4,
       useCORS: true,
       backgroundColor: "#ffffff",
-      width: pageRef.current.offsetWidth,
-      height: pageRef.current.offsetHeight,
+      width: el.offsetWidth,
+      height: el.scrollHeight,
     });
+    el.style.maxHeight = prev;
+    el.style.overflow = prevOverflow;
     const link = document.createElement("a");
     link.download = "alonso-4k.png";
     link.href = canvas.toDataURL("image/png", 1.0);
