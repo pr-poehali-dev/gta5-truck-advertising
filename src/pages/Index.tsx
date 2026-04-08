@@ -2,7 +2,7 @@ import Icon from "@/components/ui/icon";
 
 export default function Index() {
   return (
-    <div className="min-h-screen bg-white text-black overflow-x-hidden font-body">
+    <div className="bg-white text-black overflow-x-hidden font-body" style={{ aspectRatio: "4/3", width: "100%", maxHeight: "100vh", margin: "0 auto", overflow: "hidden" }}>
 
       {/* ─── ВЕРХНЯЯ СИГНАЛЬНАЯ ПОЛОСА ─── */}
       <div className="bg-[#FFD600] py-2 px-6 flex items-center justify-between">
@@ -77,9 +77,9 @@ export default function Index() {
               </div>
               <div>
                 <div className="font-black text-xs uppercase tracking-widest text-black/50 mb-1">Telegram</div>
-                <div className="font-display font-black leading-none uppercase text-black"
+                <div className="font-display font-black leading-none text-black"
                   style={{ fontSize: "clamp(22px, 4vw, 48px)" }}>
-                  5vito @294562
+                  @5vito
                 </div>
               </div>
               <Icon name="ArrowRight" size={32} className="ml-auto text-black" />
@@ -97,7 +97,7 @@ export default function Index() {
               </div>
               <div>
                 <div className="font-black text-xs uppercase tracking-widest text-white/40 mb-1">Discord</div>
-                <div className="font-display font-black leading-none uppercase text-[#FFD600] group-hover:text-white"
+                <div className="font-display font-black leading-none text-[#FFD600] group-hover:text-white"
                   style={{ fontSize: "clamp(22px, 4vw, 48px)" }}>
                   ramil707 / 5vito
                 </div>
@@ -149,7 +149,7 @@ export default function Index() {
               className="flex items-center gap-2 border border-[#FFD600] text-[#FFD600] px-4 py-2 font-black uppercase text-sm hover:bg-[#FFD600] hover:text-black transition-colors"
             >
               <Icon name="Send" size={16} />
-              5vito @294562
+              @5vito
             </a>
             <a
               href="https://discord.gg/ramil707"
