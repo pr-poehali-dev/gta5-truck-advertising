@@ -97,5 +97,16 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: "Roboto", sans-serif;
   }
+}
+
+:root {
+  --bg-dark: #0a0a0a;
+  --bg-card: #111111;
+  --bg-hover: #1a1a1a;
+  --accent-yellow: #ffd600;
+  --accent-orange: #ff6b00;
+  --accent-red: #ff2d2d;
+  --border-color: #222222;
 }
