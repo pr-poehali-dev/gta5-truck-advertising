@@ -146,34 +146,34 @@ export default function Index() {
       </section>
 
       {/* ─── FOOTER ─── */}
-      <footer className="bg-black border-t-4 border-[#FFD600] py-8">
-        <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+      <footer className="bg-black border-t-4 border-[#FFD600] py-4">
+        <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <div>
-            <div className="font-display font-black text-4xl tracking-tight leading-none">
-              <span className="text-[#FFD600]">RAMIL</span>
-              <span className="text-white">707</span>
+            <div className="font-display font-black text-base tracking-tight leading-none">
+              <span className="text-[#FFD600]">Alonso</span>
+              <span className="text-white">.com</span>
             </div>
             <div className="text-gray-500 text-xs uppercase tracking-widest mt-1">Аренда и продажа авто</div>
           </div>
 
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap gap-3">
             <a
               href="https://t.me/5vito"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 border border-[#FFD600] text-[#FFD600] px-4 py-2 font-black uppercase text-sm hover:bg-[#FFD600] hover:text-black transition-colors"
+              className="flex items-center gap-1.5 border border-[#FFD600] text-[#FFD600] px-3 py-1.5 font-black uppercase text-xs hover:bg-[#FFD600] hover:text-black transition-colors"
             >
-              <Icon name="Send" size={16} />
+              <Icon name="Send" size={12} />
               @5vito
             </a>
             <a
               href="https://discord.gg/ramil707"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 border border-[#FF6B00] text-[#FF6B00] px-4 py-2 font-black uppercase text-sm hover:bg-[#FF6B00] hover:text-black transition-colors"
+              className="flex items-center gap-1.5 border border-[#FF6B00] text-[#FF6B00] px-3 py-1.5 font-black uppercase text-xs hover:bg-[#FF6B00] hover:text-black transition-colors"
             >
-              <Icon name="MessageCircle" size={16} />
-              ramil707 / 5vito
+              <Icon name="MessageCircle" size={12} />
+              ramil707
             </a>
           </div>
 
