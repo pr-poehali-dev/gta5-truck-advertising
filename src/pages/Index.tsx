@@ -171,7 +171,7 @@ export default function Index() {
       <footer className="bg-black border-t-4 border-[#FFD600] py-4">
         <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <div>
-            <div className="font-display font-black text-base tracking-tight leading-none">
+            <div className="font-display font-black text-xs tracking-tight leading-none">
               <span className="text-[#FFD600]">Alonso</span>
               <span className="text-white">.com</span>
             </div>
