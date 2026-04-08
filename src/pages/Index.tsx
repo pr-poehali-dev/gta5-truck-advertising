@@ -1,8 +1,35 @@
 import Icon from "@/components/ui/icon";
+import { useRef } from "react";
+import html2canvas from "html2canvas";
 
 export default function Index() {
+  const pageRef = useRef<HTMLDivElement>(null);
+
+  const downloadPNG = async () => {
+    if (!pageRef.current) return;
+    const canvas = await html2canvas(pageRef.current, {
+      scale: 4,
+      useCORS: true,
+      backgroundColor: "#ffffff",
+      width: pageRef.current.offsetWidth,
+      height: pageRef.current.offsetHeight,
+    });
+    const link = document.createElement("a");
+    link.download = "alonso-4k.png";
+    link.href = canvas.toDataURL("image/png", 1.0);
+    link.click();
+  };
+
   return (
-    <div className="bg-white text-black overflow-x-hidden font-body" style={{ aspectRatio: "4/3", width: "100%", maxHeight: "100vh", margin: "0 auto", overflow: "hidden" }}>
+    <div className="relative">
+      <button
+        onClick={downloadPNG}
+        className="fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-[#FFD600] border-2 border-black px-5 py-3 font-black uppercase text-sm hover:bg-[#FF2D2D] hover:text-white transition-colors shadow-lg"
+      >
+        <Icon name="Download" size={18} />
+        Скачать PNG 4K
+      </button>
+    <div ref={pageRef} className="bg-white text-black overflow-x-hidden font-body" style={{ aspectRatio: "4/3", width: "100%", maxHeight: "100vh", margin: "0 auto", overflow: "hidden" }}>
 
       {/* ─── ВЕРХНЯЯ СИГНАЛЬНАЯ ПОЛОСА ─── */}
       <div className="bg-[#FFD600] py-2 px-6 flex items-center justify-between">
@@ -179,6 +206,7 @@ export default function Index() {
           <div className="text-gray-700 text-xs uppercase tracking-widest">© 2026</div>
         </div>
       </footer>
+    </div>
     </div>
   );
 }
