@@ -42,13 +42,13 @@ export default function Index() {
     <div ref={pageRef} className="bg-white text-black overflow-x-hidden font-body" style={{ aspectRatio: "4/3", width: "100%", maxHeight: "100vh", margin: "0 auto", overflow: "hidden" }}>
 
       {/* ─── ВЕРХНЯЯ СИГНАЛЬНАЯ ПОЛОСА ─── */}
-      <div className="bg-[#FFD600] py-1.5 px-6 flex items-center justify-between border-b-4 border-black">
-        <span className="text-black font-black text-xs uppercase tracking-[0.3em]">★★★★★ РЕЙТИНГ 5/5</span>
-        <div className="flex items-center gap-4 text-black font-black text-xs uppercase tracking-wider">
+      <div style={{ background: "#FFD600", borderBottom: "4px solid #000", padding: "6px 24px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <span style={{ color: "#000", fontWeight: 900, fontSize: "12px", textTransform: "uppercase", letterSpacing: "0.3em" }}>★★★★★ РЕЙТИНГ 5/5</span>
+        <div style={{ display: "flex", alignItems: "center", gap: "16px", color: "#000", fontWeight: 900, fontSize: "12px", textTransform: "uppercase", letterSpacing: "0.1em" }}>
           <span>АРЕНДА ФУР</span>
-          <span className="text-[#FF2D2D]">▶</span>
+          <span style={{ color: "#FF2D2D" }}>▶</span>
           <span>АРЕНДА АВТО</span>
-          <span className="text-[#FF2D2D]">▶</span>
+          <span style={{ color: "#FF2D2D" }}>▶</span>
           <span>ПРОДАЖА</span>
         </div>
       </div>
@@ -157,60 +157,46 @@ export default function Index() {
       </section>
 
       {/* ─── СТАТИСТИКА ─── */}
-      <section className="bg-[#FFD600] py-10">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-3 gap-0 text-center divide-x divide-black/20">
-            <div className="px-4">
-              <div className="font-display font-black text-5xl md:text-6xl text-black leading-none">500+</div>
-              <div className="font-black text-xs uppercase tracking-widest text-black/60 mt-1">Клиентов</div>
-            </div>
-            <div className="px-4">
-              <div className="font-display font-black text-5xl md:text-6xl text-black leading-none">5.0</div>
-              <div className="flex justify-center gap-0.5 mt-1">
-                <span className="font-black text-black" style={{ fontSize: "20px" }}>★★★★★</span>
-              </div>
-            </div>
-            <div className="px-4">
-              <div className="font-display font-black text-5xl md:text-6xl text-black leading-none">24/7</div>
-              <div className="font-black text-xs uppercase tracking-widest text-black/60 mt-1">Поддержка</div>
-            </div>
+      <section style={{ background: "#FFD600", padding: "32px 0" }}>
+        <div style={{ display: "flex", textAlign: "center" }}>
+          <div style={{ flex: 1, padding: "0 16px", borderRight: "1px solid rgba(0,0,0,0.2)" }}>
+            <div style={{ fontWeight: 900, fontSize: "56px", color: "#000", lineHeight: 1 }}>500+</div>
+            <div style={{ fontWeight: 900, fontSize: "11px", color: "rgba(0,0,0,0.6)", textTransform: "uppercase", letterSpacing: "0.1em", marginTop: "4px" }}>Клиентов</div>
+          </div>
+          <div style={{ flex: 1, padding: "0 16px", borderRight: "1px solid rgba(0,0,0,0.2)" }}>
+            <div style={{ fontWeight: 900, fontSize: "56px", color: "#000", lineHeight: 1 }}>5.0</div>
+            <div style={{ fontWeight: 900, fontSize: "20px", color: "#000", marginTop: "4px" }}>★★★★★</div>
+          </div>
+          <div style={{ flex: 1, padding: "0 16px" }}>
+            <div style={{ fontWeight: 900, fontSize: "56px", color: "#000", lineHeight: 1 }}>24/7</div>
+            <div style={{ fontWeight: 900, fontSize: "11px", color: "rgba(0,0,0,0.6)", textTransform: "uppercase", letterSpacing: "0.1em", marginTop: "4px" }}>Поддержка</div>
           </div>
         </div>
       </section>
 
       {/* ─── FOOTER ─── */}
-      <footer className="bg-black border-t-4 border-[#FFD600] py-2">
-        <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-2">
-          <div>
-            <div className="font-display font-black text-xs tracking-tight leading-none">
-              <span className="text-[#FFD600]">Alonso</span>
-              <span className="text-white">.com</span>
-            </div>
-            <div className="text-gray-400 text-xs uppercase tracking-widest mt-1">Аренда и продажа авто</div>
+      <footer style={{ background: "#000", borderTop: "4px solid #FFD600", padding: "8px 24px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <div>
+          <div style={{ fontWeight: 900, fontSize: "12px", lineHeight: 1 }}>
+            <span style={{ color: "#FFD600" }}>Alonso</span>
+            <span style={{ color: "#fff" }}>.com</span>
           </div>
-
-          <div className="flex flex-wrap gap-3">
-            <div className="flex items-center gap-1.5 border-2 border-[#FFD600] text-[#FFD600] px-3 py-1 font-black uppercase text-xs">
-              <Icon name="Zap" size={11} />
-              DASH alonso.com
-            </div>
-            <div className="flex items-center gap-1.5 border-2 border-[#FF2D2D] text-[#FF2D2D] px-3 py-1 font-black uppercase text-xs">
-              <Icon name="User" size={11} />
-              5vito @294562
-            </div>
-            <a
-              href="https://discord.gg/ramil707"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 border-2 border-[#FF6B00] text-[#FF6B00] px-3 py-1 font-black uppercase text-xs hover:bg-[#FF6B00] hover:text-black transition-colors"
-            >
-              <Icon name="MessageCircle" size={11} />
-              Discord — ramil707
-            </a>
-          </div>
-
-          <div className="text-gray-500 text-xs uppercase tracking-widest">© 2026</div>
+          <div style={{ color: "#9ca3af", fontSize: "10px", textTransform: "uppercase", letterSpacing: "0.1em", marginTop: "3px" }}>Аренда и продажа авто</div>
         </div>
+
+        <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
+          <div style={{ border: "2px solid #FFD600", color: "#FFD600", padding: "3px 10px", fontWeight: 900, fontSize: "11px", textTransform: "uppercase" }}>
+            DASH alonso.com
+          </div>
+          <div style={{ border: "2px solid #FF2D2D", color: "#FF2D2D", padding: "3px 10px", fontWeight: 900, fontSize: "11px", textTransform: "uppercase" }}>
+            5vito @294562
+          </div>
+          <div style={{ border: "2px solid #FF6B00", color: "#FF6B00", padding: "3px 10px", fontWeight: 900, fontSize: "11px", textTransform: "uppercase" }}>
+            Discord — ramil707
+          </div>
+        </div>
+
+        <div style={{ color: "#6b7280", fontSize: "10px", textTransform: "uppercase", letterSpacing: "0.1em" }}>© 2026</div>
       </footer>
     </div>
     </div>
