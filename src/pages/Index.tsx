@@ -91,6 +91,10 @@ export default function Index() {
           </div>
 
           {/* КОНТАКТЫ — БОЛЬШИЕ */}
+          <div className="flex items-center gap-4 mb-3">
+            <div className="font-black text-sm uppercase tracking-[0.3em] text-black/50">КОНТАКТЫ</div>
+            <div className="flex-1 h-0.5 bg-black/20" />
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {/* Dash */}
             <div className="flex items-center gap-4 bg-[#FFD600] border-2 border-black px-6 py-6">
