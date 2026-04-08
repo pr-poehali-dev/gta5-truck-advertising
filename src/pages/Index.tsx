@@ -55,7 +55,7 @@ export default function Index() {
 
           {/* НАЗВАНИЕ + РЕЙТИНГ */}
           <div className="flex items-end justify-between mb-2">
-            <div>
+            <div className="flex flex-col gap-4">
               <div
                 className="font-display font-black leading-none tracking-tighter"
                 style={{ fontSize: "clamp(80px, 15vw, 200px)", color: "#FF2D2D", WebkitTextStroke: "3px #000" }}
@@ -63,7 +63,7 @@ export default function Index() {
                 Alonso.com
               </div>
               <div
-                className="font-display font-black uppercase leading-none tracking-tighter -mt-4"
+                className="font-display font-black uppercase leading-none tracking-tighter"
                 style={{ fontSize: "clamp(40px, 8vw, 110px)", color: "#000" }}
               >
                 АРЕНДА & ПРОДАЖА
