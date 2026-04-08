@@ -53,102 +53,80 @@ export default function Index() {
         </div>
       </div>
 
-      {/* ─── ГЛАВНЫЙ ПРИНТ — БОК ФУРЫ ─── */}
-      <section className="relative bg-white border-b-8 border-[#FFD600] overflow-hidden">
+      {/* ─── ГЛАВНЫЙ ПРИНТ ─── */}
+      <section style={{ position: "relative", background: "#fff", borderBottom: "8px solid #FFD600", overflow: "hidden" }}>
         {/* боковые полосы */}
-        <div className="absolute left-0 top-0 w-6 h-full bg-[#FF2D2D]" />
-        <div className="absolute right-0 top-0 w-6 h-full bg-[#FF2D2D]" />
-        <div className="absolute left-6 top-0 w-2 h-full bg-[#FFD600]" />
-        <div className="absolute right-6 top-0 w-2 h-full bg-[#FFD600]" />
+        <div style={{ position: "absolute", left: 0, top: 0, width: "24px", height: "100%", background: "#FF2D2D" }} />
+        <div style={{ position: "absolute", right: 0, top: 0, width: "24px", height: "100%", background: "#FF2D2D" }} />
+        <div style={{ position: "absolute", left: "24px", top: 0, width: "8px", height: "100%", background: "#FFD600" }} />
+        <div style={{ position: "absolute", right: "24px", top: 0, width: "8px", height: "100%", background: "#FFD600" }} />
 
-        <div className="px-16 py-12">
+        <div style={{ padding: "40px 64px" }}>
 
           {/* НАЗВАНИЕ + РЕЙТИНГ */}
-          <div className="flex items-end justify-between mb-2">
-            <div>
-              <div
-                className="font-display font-black tracking-tighter"
-                style={{ fontSize: "120px", color: "#FF2D2D", WebkitTextStroke: "3px #000", lineHeight: 1 }}
-              >
+          <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: "8px" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+              <div style={{ fontSize: "120px", color: "#FF2D2D", WebkitTextStroke: "3px #000", lineHeight: 1, fontWeight: 900, letterSpacing: "-2px" }}>
                 Alonso.com
               </div>
-              <div
-                className="font-display font-black uppercase tracking-tighter"
-                style={{ fontSize: "72px", color: "#000", lineHeight: 1.1 }}
-              >
+              <div style={{ fontSize: "72px", color: "#000", lineHeight: 1, fontWeight: 900, textTransform: "uppercase", letterSpacing: "-1px" }}>
                 АРЕНДА & ПРОДАЖА
               </div>
-              <div
-                className="font-display font-black uppercase tracking-tighter"
-                style={{ fontSize: "48px", color: "#FF6B00", lineHeight: 1.2 }}
-              >
+              <div style={{ fontSize: "48px", color: "#FF6B00", lineHeight: 1, fontWeight: 900, textTransform: "uppercase", letterSpacing: "-1px" }}>
                 ГРУЗОВЫХ И ЛЕГКОВЫХ АВТО
               </div>
             </div>
 
             {/* рейтинг блок */}
-            <div className="flex flex-col items-center bg-[#FFD600] px-8 py-6 ml-8 shrink-0">
-              <div className="font-display font-black text-black" style={{ fontSize: "72px", lineHeight: 1 }}>5.0</div>
-              <div className="font-black text-black" style={{ fontSize: "28px", lineHeight: 1.2 }}>★★★★★</div>
-              <div className="font-black text-xs uppercase tracking-widest text-black mt-1">РЕЙТИНГ</div>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", background: "#FFD600", padding: "24px 32px", marginLeft: "32px", flexShrink: 0 }}>
+              <div style={{ fontSize: "72px", color: "#000", lineHeight: 1, fontWeight: 900 }}>5.0</div>
+              <div style={{ fontSize: "28px", color: "#000", lineHeight: 1.2, fontWeight: 900 }}>★★★★★</div>
+              <div style={{ fontSize: "11px", color: "#000", textTransform: "uppercase", letterSpacing: "0.1em", fontWeight: 900, marginTop: "4px" }}>РЕЙТИНГ</div>
             </div>
           </div>
 
           {/* диагональный разделитель */}
-          <div className="relative h-3 my-6 overflow-hidden">
-            <div className="absolute inset-0"
-              style={{ background: "repeating-linear-gradient(45deg, #FFD600 0px, #FFD600 20px, #000 20px, #000 24px)" }} />
-          </div>
+          <div style={{ height: "12px", margin: "20px 0", overflow: "hidden", background: "repeating-linear-gradient(45deg, #FFD600 0px, #FFD600 20px, #000 20px, #000 24px)" }} />
 
           {/* КОНТАКТЫ — БОЛЬШИЕ */}
-          <div className="flex items-center gap-4 mb-3">
-            <div className="font-black text-base uppercase tracking-[0.3em] text-black">КОНТАКТЫ</div>
-            <div className="flex-1 h-0.5 bg-black/40" />
+          <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "12px" }}>
+            <div style={{ fontWeight: 900, fontSize: "14px", textTransform: "uppercase", letterSpacing: "0.3em", color: "#000" }}>КОНТАКТЫ</div>
+            <div style={{ flex: 1, height: "2px", background: "rgba(0,0,0,0.4)" }} />
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "16px" }}>
             {/* Dash */}
-            <div className="flex items-center gap-4 bg-[#FFD600] border-2 border-black px-6 py-6">
-              <div className="bg-black p-3 shrink-0">
+            <div style={{ display: "flex", alignItems: "center", gap: "16px", background: "#FFD600", border: "2px solid #000", padding: "24px" }}>
+              <div style={{ background: "#000", padding: "12px", flexShrink: 0 }}>
                 <Icon name="Zap" size={32} className="text-[#FFD600]" />
               </div>
               <div>
-                <div className="font-black text-sm uppercase tracking-widest text-black font-extrabold mb-1">DASH</div>
-                <div className="font-display font-black text-black" style={{ fontSize: "36px", lineHeight: 1 }}>
-                  alonso.com
-                </div>
+                <div style={{ fontWeight: 900, fontSize: "12px", textTransform: "uppercase", letterSpacing: "0.1em", color: "#000", marginBottom: "4px" }}>DASH</div>
+                <div style={{ fontWeight: 900, fontSize: "36px", lineHeight: 1, color: "#000" }}>alonso.com</div>
               </div>
               <Icon name="ArrowRight" size={32} className="ml-auto text-black" />
             </div>
 
             {/* 5vito */}
-            <div className="flex items-center gap-4 bg-[#FF2D2D] border-2 border-black px-6 py-6">
-              <div className="bg-black p-3 shrink-0">
+            <div style={{ display: "flex", alignItems: "center", gap: "16px", background: "#FF2D2D", border: "2px solid #000", padding: "24px" }}>
+              <div style={{ background: "#000", padding: "12px", flexShrink: 0 }}>
                 <Icon name="User" size={32} className="text-[#FFD600]" />
               </div>
               <div>
-                <div className="font-black text-sm uppercase tracking-widest text-white mb-1">5vito</div>
-                <div className="font-display font-black text-white" style={{ fontSize: "36px", lineHeight: 1 }}>
-                  @294562
-                </div>
+                <div style={{ fontWeight: 900, fontSize: "12px", textTransform: "uppercase", letterSpacing: "0.1em", color: "#fff", marginBottom: "4px" }}>5vito</div>
+                <div style={{ fontWeight: 900, fontSize: "36px", lineHeight: 1, color: "#fff" }}>@294562</div>
               </div>
               <Icon name="ArrowRight" size={32} className="ml-auto text-white" />
             </div>
 
             {/* Discord */}
-            <a
-              href="https://discord.gg/ramil707"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-4 bg-black border-2 border-black px-6 py-6 hover:bg-[#FF2D2D] transition-colors group"
-            >
-              <div className="bg-[#FFD600] p-3 shrink-0">
+            <a href="https://discord.gg/ramil707" target="_blank" rel="noopener noreferrer"
+              style={{ display: "flex", alignItems: "center", gap: "16px", background: "#000", border: "2px solid #000", padding: "24px", textDecoration: "none" }}>
+              <div style={{ background: "#FFD600", padding: "12px", flexShrink: 0 }}>
                 <Icon name="MessageCircle" size={32} className="text-black" />
               </div>
               <div>
-                <div className="font-black text-sm uppercase tracking-widest text-white mb-1">Discord</div>
-                <div className="font-display font-black text-[#FFD600] group-hover:text-white" style={{ fontSize: "36px", lineHeight: 1 }}>
-                  ramil707
-                </div>
+                <div style={{ fontWeight: 900, fontSize: "12px", textTransform: "uppercase", letterSpacing: "0.1em", color: "#fff", marginBottom: "4px" }}>Discord</div>
+                <div style={{ fontWeight: 900, fontSize: "36px", lineHeight: 1, color: "#FFD600" }}>ramil707</div>
               </div>
               <Icon name="ArrowRight" size={32} className="ml-auto text-[#FFD600]" />
             </a>
