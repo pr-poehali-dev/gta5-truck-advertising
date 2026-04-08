@@ -7,12 +7,22 @@ export default function Index() {
 
   const downloadPNG = async () => {
     if (!pageRef.current) return;
-    const canvas = await html2canvas(pageRef.current, {
+    const el = pageRef.current;
+    const rect = el.getBoundingClientRect();
+    const canvas = await html2canvas(el, {
       scale: 4,
       useCORS: true,
+      allowTaint: true,
       backgroundColor: "#ffffff",
-      width: pageRef.current.offsetWidth,
-      height: pageRef.current.offsetHeight,
+      width: rect.width,
+      height: rect.height,
+      windowWidth: rect.width,
+      windowHeight: rect.height,
+      x: 0,
+      y: 0,
+      scrollX: 0,
+      scrollY: 0,
+      logging: false,
     });
     const link = document.createElement("a");
     link.download = "alonso-4k.png";
@@ -58,29 +68,29 @@ export default function Index() {
             <div>
               <div
                 className="font-display font-black tracking-tighter"
-                style={{ fontSize: "clamp(80px, 15vw, 200px)", color: "#FF2D2D", WebkitTextStroke: "3px #000", lineHeight: 1 }}
+                style={{ fontSize: "120px", color: "#FF2D2D", WebkitTextStroke: "3px #000", lineHeight: 1 }}
               >
                 Alonso.com
               </div>
               <div
                 className="font-display font-black uppercase tracking-tighter"
-                style={{ fontSize: "clamp(40px, 8vw, 110px)", color: "#000", lineHeight: 1 }}
+                style={{ fontSize: "72px", color: "#000", lineHeight: 1.1 }}
               >
                 АРЕНДА & ПРОДАЖА
               </div>
               <div
-                className="font-display font-black uppercase leading-none tracking-tighter"
-                style={{ fontSize: "clamp(30px, 5vw, 72px)", color: "#FF6B00" }}
+                className="font-display font-black uppercase tracking-tighter"
+                style={{ fontSize: "48px", color: "#FF6B00", lineHeight: 1.2 }}
               >
                 ГРУЗОВЫХ И ЛЕГКОВЫХ АВТО
               </div>
             </div>
 
             {/* рейтинг блок */}
-            <div className="hidden md:flex flex-col items-center bg-[#FFD600] px-8 py-6 ml-8 shrink-0">
-              <div className="font-display font-black text-7xl text-black leading-none">5.0</div>
-              <div className="text-3xl mb-1 leading-none">★★★★★</div>
-              <div className="font-black text-xs uppercase tracking-widest text-black">РЕЙТИНГ</div>
+            <div className="flex flex-col items-center bg-[#FFD600] px-8 py-6 ml-8 shrink-0">
+              <div className="font-display font-black text-black" style={{ fontSize: "72px", lineHeight: 1 }}>5.0</div>
+              <div className="font-black text-black" style={{ fontSize: "28px", lineHeight: 1.2 }}>★★★★★</div>
+              <div className="font-black text-xs uppercase tracking-widest text-black mt-1">РЕЙТИНГ</div>
             </div>
           </div>
 
@@ -103,8 +113,7 @@ export default function Index() {
               </div>
               <div>
                 <div className="font-black text-sm uppercase tracking-widest text-black font-extrabold mb-1">DASH</div>
-                <div className="font-display font-black leading-none text-black"
-                  style={{ fontSize: "clamp(22px, 4vw, 48px)" }}>
+                <div className="font-display font-black text-black" style={{ fontSize: "36px", lineHeight: 1 }}>
                   alonso.com
                 </div>
               </div>
@@ -118,8 +127,7 @@ export default function Index() {
               </div>
               <div>
                 <div className="font-black text-sm uppercase tracking-widest text-white mb-1">5vito</div>
-                <div className="font-display font-black leading-none text-white"
-                  style={{ fontSize: "clamp(22px, 4vw, 48px)" }}>
+                <div className="font-display font-black text-white" style={{ fontSize: "36px", lineHeight: 1 }}>
                   @294562
                 </div>
               </div>
@@ -138,8 +146,7 @@ export default function Index() {
               </div>
               <div>
                 <div className="font-black text-sm uppercase tracking-widest text-white mb-1">Discord</div>
-                <div className="font-display font-black leading-none text-[#FFD600] group-hover:text-white"
-                  style={{ fontSize: "clamp(22px, 4vw, 48px)" }}>
+                <div className="font-display font-black text-[#FFD600] group-hover:text-white" style={{ fontSize: "36px", lineHeight: 1 }}>
                   ramil707
                 </div>
               </div>
@@ -160,7 +167,7 @@ export default function Index() {
             <div className="px-4">
               <div className="font-display font-black text-5xl md:text-6xl text-black leading-none">5.0</div>
               <div className="flex justify-center gap-0.5 mt-1">
-                {[...Array(5)].map((_, i) => <span key={i} className="text-lg">⭐</span>)}
+                <span className="font-black text-black" style={{ fontSize: "20px" }}>★★★★★</span>
               </div>
             </div>
             <div className="px-4">
